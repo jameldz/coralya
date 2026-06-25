@@ -386,65 +386,106 @@ const PRODUCT_IMAGES={
 };
 const products=[
   // PAPIER TOILETTE
-  {id:'pt-premium',cat:'pt',badge:'Premium · 3 plis',name:'Premium',desc:'Douceur soyeuse · 3 plis premium · format compact',
+  {id:'pt-premium',cat:'pt',badge:'Premium · 3 plis',name:'Premium',desc:'Douceur soyeuse · 3 plis premium · qualité supérieure',
     variants:[
-      {label:'Pack 4 rouleaux · 200 feuilles',pricePerPack:1.55,ppCarton:12,ppPalette:432}
+      {label:'Pack 4 rouleaux · 200 feuilles',pricePerPack:1.55,ppCarton:12,ppPalette:432},
+      {label:'Pack 6 rouleaux · 200 feuilles',pricePerPack:2.30,ppCarton:10,ppPalette:360},
+      {label:'Pack 8 rouleaux · 200 feuilles',pricePerPack:3.05,ppCarton:8,ppPalette:288},
+      {label:'Pack 10 rouleaux · 200 feuilles',pricePerPack:3.75,ppCarton:6,ppPalette:240},
+      {label:'Pack 12 rouleaux · 200 feuilles',pricePerPack:4.45,ppCarton:6,ppPalette:216}
     ]},
-  {id:'pt-classic',cat:'pt',badge:'Classic · 2 plis',name:'Classic',desc:'Usage quotidien · 2 plis confort · FSC',
+  {id:'pt-classic',cat:'pt',badge:'Classic · 2 plis',name:'Classic',desc:'Usage quotidien · 2 plis confort · pâte vierge FSC',
     variants:[
-      {label:'Pack 4 rouleaux · 220 feuilles',pricePerPack:1.25,ppCarton:12,ppPalette:432}
+      {label:'Pack 4 rouleaux · 220 feuilles',pricePerPack:1.25,ppCarton:12,ppPalette:432},
+      {label:'Pack 6 rouleaux · 220 feuilles',pricePerPack:1.85,ppCarton:10,ppPalette:360},
+      {label:'Pack 8 rouleaux · 220 feuilles',pricePerPack:2.45,ppCarton:8,ppPalette:288},
+      {label:'Pack 10 rouleaux · 220 feuilles',pricePerPack:3.00,ppCarton:6,ppPalette:240},
+      {label:'Pack 12 rouleaux · 220 feuilles',pricePerPack:3.55,ppCarton:6,ppPalette:216}
     ]},
   {id:'pt-jumbo',cat:'pt',badge:'Jumbo · grand format',name:'Jumbo',desc:'Grand format · longue durée · 2 plis épais',
     variants:[
-      {label:'Pack 10 rouleaux · 350 feuilles',pricePerPack:2.95,ppCarton:6,ppPalette:240}
+      {label:'Pack 4 rouleaux · 350 feuilles',pricePerPack:1.45,ppCarton:8,ppPalette:288},
+      {label:'Pack 6 rouleaux · 350 feuilles',pricePerPack:2.15,ppCarton:6,ppPalette:240},
+      {label:'Pack 8 rouleaux · 350 feuilles',pricePerPack:2.80,ppCarton:6,ppPalette:216},
+      {label:'Pack 10 rouleaux · 350 feuilles',pricePerPack:2.95,ppCarton:6,ppPalette:240},
+      {label:'Pack 12 rouleaux · 350 feuilles',pricePerPack:4.15,ppCarton:5,ppPalette:180}
     ]},
   {id:'pt-maxi',cat:'pt',badge:'Maxi · économique',name:'Maxi',desc:'Entrée de gamme · maxi rouleaux · économique',
     variants:[
-      {label:'Pack 12 rouleaux · 180 feuilles',pricePerPack:1.15,ppCarton:8,ppPalette:288}
+      {label:'Pack 4 rouleaux · 180 feuilles',pricePerPack:0.55,ppCarton:12,ppPalette:432},
+      {label:'Pack 6 rouleaux · 180 feuilles',pricePerPack:0.80,ppCarton:10,ppPalette:360},
+      {label:'Pack 8 rouleaux · 180 feuilles',pricePerPack:1.00,ppCarton:8,ppPalette:288},
+      {label:'Pack 10 rouleaux · 180 feuilles',pricePerPack:1.15,ppCarton:8,ppPalette:288},
+      {label:'Pack 12 rouleaux · 180 feuilles',pricePerPack:1.30,ppCarton:6,ppPalette:216},
+      {label:'Pack 24 rouleaux · 180 feuilles',pricePerPack:2.50,ppCarton:4,ppPalette:144}
     ]},
 
   // ESSUIE-TOUT
   {id:'et-decore',cat:'et',badge:'Décoré · 2 plis',name:'Essuie-tout Décoré',desc:'Ultra absorbant · 2 plis décorés · usage cuisine',
     variants:[
+      {label:'1 rouleau · 60 feuilles',pricePerPack:0.55,ppCarton:24,ppPalette:864},
       {label:'Pack 2 rouleaux · 60 feuilles',pricePerPack:1.05,ppCarton:12,ppPalette:432},
-      {label:'Pack 4 rouleaux · 60 feuilles',pricePerPack:2.10,ppCarton:8,ppPalette:288}
+      {label:'Pack 4 rouleaux · 60 feuilles',pricePerPack:2.10,ppCarton:8,ppPalette:288},
+      {label:'Pack 6 rouleaux · 60 feuilles',pricePerPack:3.15,ppCarton:6,ppPalette:216},
+      {label:'Pack 8 rouleaux · 60 feuilles',pricePerPack:4.10,ppCarton:5,ppPalette:180}
     ]},
   {id:'et-maxi-roll',cat:'et',badge:'Maxi Roll · XL',name:'Essuie-tout Maxi Roll',desc:'Grand format · usage intensif · haute résistance',
     variants:[
+      {label:'1 rouleau XL · 120 feuilles',pricePerPack:1.25,ppCarton:18,ppPalette:648},
       {label:'Pack 2 rouleaux XL · 120 feuilles',pricePerPack:2.40,ppCarton:8,ppPalette:288},
-      {label:'Pack 4 rouleaux XL · 120 feuilles',pricePerPack:4.60,ppCarton:6,ppPalette:216}
+      {label:'Pack 4 rouleaux XL · 120 feuilles',pricePerPack:4.60,ppCarton:6,ppPalette:216},
+      {label:'Pack 6 rouleaux XL · 120 feuilles',pricePerPack:6.80,ppCarton:4,ppPalette:144}
     ]},
 
   // MOUCHOIRS & SERVIETTES
-  {id:'mo-boite',cat:'ms',badge:'Mouchoirs · boîte',name:'Mouchoirs Boîte',desc:'Boîte de 100 mouchoirs · 2 plis · douceur premium',
+  {id:'mo-boite',cat:'ms',badge:'Mouchoirs · boîte',name:'Mouchoirs Boîte',desc:'Boîte de mouchoirs · 2 plis · douceur premium',
     variants:[
-      {label:'Boîte 100 mouchoirs 2 plis',pricePerPack:0.42,ppCarton:24,ppPalette:1200}
+      {label:'Boîte 80 mouchoirs 2 plis',pricePerPack:0.35,ppCarton:24,ppPalette:1296},
+      {label:'Boîte 100 mouchoirs 2 plis',pricePerPack:0.42,ppCarton:24,ppPalette:1200},
+      {label:'Boîte 150 mouchoirs 2 plis',pricePerPack:0.58,ppCarton:18,ppPalette:864},
+      {label:'Boîte 200 mouchoirs 3 plis',pricePerPack:0.95,ppCarton:16,ppPalette:768}
     ]},
-  {id:'mo-poche',cat:'ms',badge:'Mouchoirs · poche',name:'Mouchoirs Poche',desc:'Pack 6 étuis × 10 mouchoirs · format nomade',
+  {id:'mo-poche',cat:'ms',badge:'Mouchoirs · poche',name:'Mouchoirs Poche',desc:'Étuis poche · format nomade · pratique',
     variants:[
-      {label:'Pack 6 étuis × 10 mouchoirs',pricePerPack:0.95,ppCarton:20,ppPalette:800}
+      {label:'Pack 6 étuis × 10 mouchoirs',pricePerPack:0.95,ppCarton:20,ppPalette:800},
+      {label:'Pack 12 étuis × 10 mouchoirs',pricePerPack:1.75,ppCarton:12,ppPalette:432},
+      {label:'Pack 24 étuis × 10 mouchoirs',pricePerPack:3.30,ppCarton:8,ppPalette:288}
     ]},
-  {id:'se-table',cat:'ms',badge:'Serviettes · table',name:'Serviettes de Table',desc:'Boîte 80 serviettes · 2 plis · usage restauration',
+  {id:'se-table',cat:'ms',badge:'Serviettes · table',name:'Serviettes de Table',desc:'Boîte serviettes · 2 plis · usage restauration',
     variants:[
-      {label:'Boîte 80 serviettes 2 plis 33×33 cm',pricePerPack:0.55,ppCarton:16,ppPalette:640}
+      {label:'Boîte 80 serviettes 2 plis 33×33 cm',pricePerPack:0.55,ppCarton:16,ppPalette:640},
+      {label:'Boîte 100 serviettes 2 plis 33×33 cm',pricePerPack:0.70,ppCarton:16,ppPalette:576},
+      {label:'Boîte 150 serviettes 2 plis 38×38 cm',pricePerPack:1.10,ppCarton:12,ppPalette:432},
+      {label:'Boîte 200 serviettes 3 plis 40×40 cm',pricePerPack:1.85,ppCarton:10,ppPalette:360}
     ]},
-  {id:'se-distrib',cat:'ms',badge:'Serviettes · distributeur',name:'Serviettes Distributeur',desc:'Recharge 200 serviettes · usage collectivité',
+  {id:'se-distrib',cat:'ms',badge:'Serviettes · distributeur',name:'Serviettes Distributeur',desc:'Recharge serviettes pliées · usage collectivité',
     variants:[
-      {label:'Recharge 200 serviettes pliées',pricePerPack:1.20,ppCarton:12,ppPalette:432}
+      {label:'Recharge 150 serviettes pliées',pricePerPack:0.95,ppCarton:14,ppPalette:504},
+      {label:'Recharge 200 serviettes pliées',pricePerPack:1.20,ppCarton:12,ppPalette:432},
+      {label:'Recharge 300 serviettes pliées',pricePerPack:1.70,ppCarton:10,ppPalette:360}
     ]},
 
   // LINGETTES
-  {id:'lg-antibact',cat:'lg',badge:'Lingettes · antibactériennes',name:'Lingettes Antibactériennes',desc:'80 lingettes · usage personnel · fraîcheur',
+  {id:'lg-antibact',cat:'lg',badge:'Lingettes · antibactériennes',name:'Lingettes Antibactériennes',desc:'Usage personnel · fraîcheur · douceur cutanée',
     variants:[
-      {label:'Paquet 80 lingettes antibactériennes',pricePerPack:0.80,ppCarton:18,ppPalette:540}
+      {label:'Paquet 40 lingettes antibactériennes',pricePerPack:0.45,ppCarton:24,ppPalette:864},
+      {label:'Paquet 60 lingettes antibactériennes',pricePerPack:0.65,ppCarton:20,ppPalette:720},
+      {label:'Paquet 80 lingettes antibactériennes',pricePerPack:0.80,ppCarton:18,ppPalette:540},
+      {label:'Paquet 100 lingettes antibactériennes',pricePerPack:0.95,ppCarton:16,ppPalette:480}
     ]},
-  {id:'lg-multi',cat:'lg',badge:'Lingettes · multi-usages',name:'Lingettes Multi-usages',desc:'100 lingettes · multi-surfaces · nettoyage',
+  {id:'lg-multi',cat:'lg',badge:'Lingettes · multi-usages',name:'Lingettes Multi-usages',desc:'Multi-surfaces · nettoyage · ménager',
     variants:[
-      {label:'Paquet 100 lingettes multi-usages',pricePerPack:0.65,ppCarton:16,ppPalette:480}
+      {label:'Paquet 60 lingettes multi-usages',pricePerPack:0.45,ppCarton:20,ppPalette:720},
+      {label:'Paquet 80 lingettes multi-usages',pricePerPack:0.55,ppCarton:18,ppPalette:540},
+      {label:'Paquet 100 lingettes multi-usages',pricePerPack:0.65,ppCarton:16,ppPalette:480},
+      {label:'Paquet 120 lingettes multi-usages',pricePerPack:0.78,ppCarton:14,ppPalette:420}
     ]},
-  {id:'lg-desinf',cat:'lg',badge:'Lingettes · désinfectantes',name:'Lingettes Désinfectantes',desc:'60 lingettes · désinfection · norme EN 14476',
+  {id:'lg-desinf',cat:'lg',badge:'Lingettes · désinfectantes',name:'Lingettes Désinfectantes',desc:'Désinfection · norme EN 14476 · pro & hôpital',
     variants:[
-      {label:'Paquet 60 lingettes désinfectantes',pricePerPack:1.20,ppCarton:18,ppPalette:540}
+      {label:'Paquet 40 lingettes désinfectantes',pricePerPack:0.90,ppCarton:24,ppPalette:864},
+      {label:'Paquet 60 lingettes désinfectantes',pricePerPack:1.20,ppCarton:18,ppPalette:540},
+      {label:'Paquet 80 lingettes désinfectantes',pricePerPack:1.55,ppCarton:16,ppPalette:480},
+      {label:'Paquet 100 lingettes désinfectantes',pricePerPack:1.85,ppCarton:14,ppPalette:420}
     ]}
 ];
 
