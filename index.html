@@ -27,6 +27,12 @@ header.site{
 .brand{display:flex;align-items:baseline;gap:14px}
 .brand .wm{font-family:'Playfair Display',serif;font-size:30px;font-style:italic;letter-spacing:0.5px;font-weight:600}
 .brand .tag{font-size:11px;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase}
+.hdr-info{display:flex;align-items:center;gap:24px;margin-left:auto;margin-right:24px}
+.hdr-pill{font-size:11px;letter-spacing:2px;color:var(--cream);text-transform:uppercase;border:1px solid rgba(201,168,106,0.45);padding:7px 14px;border-radius:2px;opacity:0.95}
+.hdr-link{font-size:13px;color:var(--cream);text-decoration:none;display:flex;align-items:center;gap:7px;letter-spacing:0.3px;font-weight:500}
+.hdr-link:hover{color:var(--gold)}
+.hdr-icon{font-size:15px}
+@media(max-width:980px){.hdr-info{display:none}}
 .cart-btn{
   background:transparent;color:var(--cream);border:1.5px solid var(--gold);
   padding:9px 22px;cursor:pointer;display:flex;align-items:center;gap:10px;
@@ -228,6 +234,12 @@ footer p{font-size:13px;color:#bcc8d3;line-height:1.6;max-width:680px;margin:0 a
     <span class="wm">Zentra</span>
     <span class="tag">Hygiène</span>
   </div>
+  <nav class="hdr-info">
+    <span class="hdr-pill">Vente B2B en gros · Marseille</span>
+    <a href="https://wa.me/33773514284" class="hdr-link" target="_blank" rel="noopener">
+      <span class="hdr-icon">💬</span> +33 7 73 51 42 84
+    </a>
+  </nav>
   <button class="cart-btn" onclick="openCart()" aria-label="Ouvrir le panier">
     <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
@@ -295,6 +307,10 @@ footer p{font-size:13px;color:#bcc8d3;line-height:1.6;max-width:680px;margin:0 a
   <div class="cart-body" id="cart-body">
     <div class="cart-list" id="cart-list"></div>
     <div class="checkout-screen" id="checkout-screen">
+      <div id="returning-client" style="display:none;background:#f5ebd4;color:#7c5a14;padding:10px 14px;font-size:12px;border-radius:3px;margin-bottom:14px;text-align:center;line-height:1.5">
+        <strong>Bon retour !</strong> Vos coordonnées sont pré-remplies.
+        <button type="button" onclick="clearClientInfo()" style="background:none;border:none;color:#7c5a14;text-decoration:underline;cursor:pointer;font-size:11px;margin-left:6px;padding:0">tout effacer</button>
+      </div>
       <form class="checkout-form" id="checkout-form" onsubmit="submitOrder(event)">
         <div><label>Raison sociale *</label><input type="text" required name="company" placeholder="SARL, SAS, EURL..."></div>
         <div><label>Contact *</label><input type="text" required name="name" placeholder="Jean Dupont · Acheteur"></div>
@@ -338,7 +354,7 @@ footer p{font-size:13px;color:#bcc8d3;line-height:1.6;max-width:680px;margin:0 a
     <div class="cart-total"><span class="label">Total HT</span><span class="amount" id="cart-total">0,00 €</span></div>
     <div class="cart-info">Départ entrepôt Marseille · Remises dégressives appliquées automatiquement au-delà d'1 container</div>
     <button class="checkout-btn whatsapp-btn" id="checkout-btn" onclick="goToCheckout()" disabled>
-      <span style="font-size:16px;">💬</span>
+      <span style="font-size:16px;">→</span>
       <span id="checkout-btn-label">Ajoutez 1 palette minimum</span>
     </button>
   </div>
@@ -586,7 +602,7 @@ function removeFromCart(idx){cart.splice(idx,1);renderCart()}
 
 function getDiscountTier(totalPalettes){
   for(const t of DISCOUNT_TIERS){if(totalPalettes>=t.min&&totalPalettes<=t.max)return t}
-  return DISCOUNT_TIERS[DISCOUNT_TIERS.length-1];
+  return {min:0,max:19,pct:0,label:''};
 }
 
 function renderCart(){
@@ -632,7 +648,7 @@ function renderCart(){
       const totalPacks=item.packsPerUnit*item.qty;
       return `<div class="cart-item"><div><div class="name">${item.productName}</div><div class="variant">${item.variantLabel}</div><div class="unit">${item.qty} × ${item.unit==='palette'?'palette':'container'} (${fmtInt(totalPacks)} packs · ${fmtEur(item.pricePerPack)} l'unité)</div><button class="remove" onclick="removeFromCart(${i})">Retirer</button></div><div class="line-total">${fmtEur(item.pricePerUnit*item.qty)}</div></div>`;
     }).join('');
-    btn.disabled=false;lbl.textContent='Commander par WhatsApp';
+    btn.disabled=false;lbl.textContent='Continuer vers les coordonnées';
   }
 }
 
@@ -645,9 +661,35 @@ function goToCheckout(){
   document.getElementById('cart-title').textContent='Coordonnées';
 }
 
+function loadClientInfo(){
+  try{
+    const saved=JSON.parse(localStorage.getItem('zentra_client')||'{}');
+    if(!saved||!saved.company)return;
+    const f=document.getElementById('checkout-form');
+    if(!f)return;
+    ['company','name','phone','city','type'].forEach(k=>{if(f.elements[k]&&saved[k])f.elements[k].value=saved[k]});
+    const banner=document.getElementById('returning-client');
+    if(banner)banner.style.display='block';
+  }catch(e){}
+}
+function saveClientInfo(d){
+  try{
+    const toSave={company:d.company,name:d.name,phone:d.phone,city:d.city,type:d.type};
+    localStorage.setItem('zentra_client',JSON.stringify(toSave));
+  }catch(e){}
+}
+function clearClientInfo(){
+  try{localStorage.removeItem('zentra_client');}catch(e){}
+  const f=document.getElementById('checkout-form');
+  if(f)['company','name','phone','city','type','comment'].forEach(k=>{if(f.elements[k])f.elements[k].value=''});
+  const banner=document.getElementById('returning-client');
+  if(banner)banner.style.display='none';
+}
+
 function submitOrder(ev){
   ev.preventDefault();
   const d=Object.fromEntries(new FormData(ev.target).entries());
+  saveClientInfo(d);
   const orderRef='ZTR-'+Date.now().toString().slice(-8);
   const totalPalettes=cart.reduce((s,i)=>s+(i.unit==='palette'?i.qty:i.qty*PALETTES_PER_CONTAINER),0);
   const totalContainersEq=(totalPalettes/PALETTES_PER_CONTAINER).toFixed(1).replace('.0','');
@@ -683,6 +725,7 @@ function resetCart(){
 
 renderProducts();
 renderCart();
+loadClientInfo();
 </script>
 </body>
 </html>
